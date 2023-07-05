@@ -1,0 +1,9 @@
+<h1><%= @company.name %></h1>
+<h3>Federal EIN:</h3> 
+<p><%= @company.federal_ein %></p>
+<h3>Non-Profit?</h3> 
+<p><%= @company.non_profit %></p>
+<h3>Address:</h3>
+<p><%= "#{@company.address_line_1} #{@company.address_line_2}, #{@company.city}, #{@company.state} #{@company.zipcode}" %> </p>
+
+<%# Will need to link to list of employees eventually %>

@@ -49,7 +49,7 @@ Then I see the name of each parent record in the system
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 2, Parent Show 
 
