@@ -38,7 +38,7 @@ _Note_: When writing code for each user story, it is important to go in **numeri
 ##### CRUD
 
 ```
-[ ] done
+[x] done
 
 User Story 1, Parent Index 
 
