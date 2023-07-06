@@ -1,0 +1,7 @@
+<h1>All Employees</h1>
+<% @employees.each do |employee| %>
+  <h3>"<%= employee.name %>"</h3>
+  <p>i-9 Eligible?: <%= employee.i9_eligible %></p>
+  <p>Benefits Eligible?: <%= employee.benefits_eligible %></p>
+  <p>Salary: <%= employee.salary %></p>
+<% end %>
