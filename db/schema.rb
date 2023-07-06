@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_05_190804) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_06_232441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,10 +19,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_05_190804) do
     t.integer "federal_ein"
     t.boolean "non_profit"
     t.string "address_line_1"
-    t.string "address_line_2"
+    t.string "address_line2"
     t.string "city"
     t.string "state"
     t.string "zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.boolean "i9_eligible"
+    t.boolean "benefits_eligible"
+    t.integer "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
