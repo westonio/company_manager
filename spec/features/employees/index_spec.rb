@@ -23,15 +23,28 @@ RSpec.describe "Employees Index Page", type: :feature do
       end
 
       it 'shows employees i9_eligibility (boolean)' do
+        visit "/employees"
 
+        expect(page).to have_content(@manila.i9_eligible)
+        expect(page).to have_content(@latrice.i9_eligible)
+        expect(page).to have_content(@jimbo.i9_eligible)
       end
 
       it 'shows employees benefits eligibility (boolean)' do
+        visit "/employees"
 
+        expect(page).to have_content(@manila.benefits_eligible)
+        expect(page).to have_content(@latrice.benefits_eligible)
+        expect(page).to have_content(@jimbo.benefits_eligible)
       end
 
       it 'shows employees salary' do
+        visit "/employees"
 
+        expect(page).to have_content(@manila.salary)
+        expect(page).to have_content(@latrice.salary)
+        expect(page).to have_content(@jimbo.salary)
+        save_and_open_page
       end
     end
   end
