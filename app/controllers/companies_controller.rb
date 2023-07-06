@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = ["DripDrop Coffee", "Who Knows", "Another Shop"]
+    @companies = Company.all
   end
 
   def show

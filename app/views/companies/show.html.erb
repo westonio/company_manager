@@ -4,6 +4,11 @@
 <h3>Non-Profit?</h3> 
 <p><%= @company.non_profit %></p>
 <h3>Address:</h3>
-<p><%= "#{@company.address_line_1} #{@company.address_line_2}, #{@company.city}, #{@company.state} #{@company.zipcode}" %> </p>
+<% if @company.address_line_2.empty? %>
+  <p><%= "#{@company.address_line_1}, #{@company.city}, #{@company.state} #{@company.zipcode}" %></p>
+<% else %>
+  <p><%= "#{@company.address_line_1}, #{@company.address_line_2}, #{@company.city}, #{@company.state} #{@company.zipcode}" %></p>
+<% end %>
+  
 
 <%# Will need to link to list of employees eventually %>
