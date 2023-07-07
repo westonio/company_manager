@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_232441) do
     t.integer "federal_ein"
     t.boolean "non_profit"
     t.string "address_line_1"
-    t.string "address_line2"
+    t.string "address_line_2"
     t.string "city"
     t.string "state"
     t.string "zipcode"
