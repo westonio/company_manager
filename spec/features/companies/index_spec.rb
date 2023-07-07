@@ -13,7 +13,6 @@ RSpec.describe 'Companies Index', type: :feature do
 
       expect(page).to have_content(company.name)
       expect(page).to have_content(company2.name)
-      save_and_open_page
     end
   end
 end
