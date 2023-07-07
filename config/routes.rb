@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get "/", to: "welcome#index"
   get "/companies", to: "companies#index"
   get "/companies/:id", to: "companies#show"
+  get "/employees", to: "employees#index"
 end
