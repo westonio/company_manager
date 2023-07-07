@@ -9,34 +9,31 @@ RSpec.describe 'Employee Show Page', type: :feature do
   describe "When I visit '/child_table_name/:id'" do
     describe 'see the employee with that id including the employees attributes' do
       before :each do
-        @manila = Employee.create!(first_name: "Manila", last_name: "Luzon", i9_eligible: true, benefits_eligible: false, salary: 69000)
-        @latrice = Employee.create!(first_name: "Latrice", last_name: "Royale", i9_eligible: true, benefits_eligible: false, salary: 95000)
-        @jimbo = Employee.create!(first_name: "Jimbo", last_name: "Clown", i9_eligible: true, benefits_eligible: false, salary: 87340)
+        @company = Company.create!(name: "Frank & Roze", federal_ein: 123456789, non_profit: false, address_line_1: "4097 E 9th Ave", address_line_2: "", city: "Denver", state: "CO", zipcode: "80220")
+        @manila = Employee.create!(first_name: "Manila", last_name: "Luzon", i9_eligible: true, benefits_eligible: false, salary: 69000, company_id: @company.id)
+        # @latrice = Employee.create!(first_name: "Latrice", last_name: "Royale", i9_eligible: true, benefits_eligible: false, salary: 95000, company_id: @company.id)
+        # @jimbo = Employee.create!(first_name: "Jimbo", last_name: "Clown", i9_eligible: true, benefits_eligible: false, salary: 87340, company_id: @company2.id)
+        visit "/employees/#{@manila.id}"
       end
 
       it 'shows employees name' do
-        visit "/employees/#{@manila.id}"
-
         expect(page).to have_content(@manila.name)
       end
 
       it 'shows employees i9_eligibility (boolean)' do
-        visit "/employees/#{@manila.id}"
-
         expect(page).to have_content(@manila.i9_eligible)
       end
 
       it 'shows employees benefits eligibility (boolean)' do
-        visit "/employees/#{@manila.id}"
-
         expect(page).to have_content(@manila.benefits_eligible)
       end
 
       it 'shows employees salary' do
-        visit "/employees/#{@manila.id}"
-
         expect(page).to have_content(@manila.salary)
-        save_and_open_page
+      end
+      
+      it 'shows employees company id' do
+        expect(page).to have_content(@manila.company_id)
       end
     end
   end
