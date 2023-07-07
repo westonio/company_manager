@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Company, type: :model do
-  xit { should belongs_to(:company) }
+RSpec.describe Employee, type: :model do
+  describe 'association' do
+    xit { should belongs_to(:company) }
+  end
   
   describe "initialize methods" do
     it 'can concate the first and last name' do
