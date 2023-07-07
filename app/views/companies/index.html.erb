@@ -1,5 +1,5 @@
 <h1>My Companies</h1>
 
 <% @companies.each do |company| %>
-  <h3><%= company.name %></h3>
+  <p><b><%= company.name %></b> Created at: <%= company.created_at %></p>
 <% end %>
