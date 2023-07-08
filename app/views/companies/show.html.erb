@@ -1,14 +1,11 @@
 <h1><%= @company.name %></h1>
-<h3>Federal EIN:</h3> 
-<p><%= @company.federal_ein %></p>
-<h3>Non-Profit?</h3> 
-<p><%= @company.non_profit %></p>
-<h3>Address:</h3>
-<% if @company.address_line_2.empty? %>
-  <p><%= "#{@company.address_line_1}, #{@company.city}, #{@company.state} #{@company.zipcode}" %></p>
-<% else %>
-  <p><%= "#{@company.address_line_1}, #{@company.address_line_2}, #{@company.city}, #{@company.state} #{@company.zipcode}" %></p>
-<% end %>
-  
-
-<%# Will need to link to list of employees eventually %>
+<h3>Federal EIN: <span style="font-weight:normal"><%= @company.federal_ein %></span></h3> 
+<h3>Non-Profit? <span style="font-weight:normal"><%= @company.non_profit %></span></h3> 
+<h3>Address: <span style="font-weight:normal">
+    <% if @company.address_line_2.empty? %>
+      <%= "#{@company.address_line_1}, #{@company.city}, #{@company.state} #{@company.zipcode}" %>
+    <% else %>
+      <%= "#{@company.address_line_1}, #{@company.address_line_2}, #{@company.city}, #{@company.state} #{@company.zipcode}" %>
+    <% end %></span>
+</h3>
+  <h3>Employee Count: <span style="font-weight:normal"><%= @company.employee_count %></span></h3>
