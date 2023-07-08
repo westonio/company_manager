@@ -6,7 +6,7 @@ RSpec.describe 'Company Show Page', type: :feature do
   # Then I see the parent with that id including the parent's attributes
   describe "When I visit '/parents/:id'" do
     before :each do
-      @company = Company.create!(name: "Frank & Roze", federal_ein: 123456789, non_profit: false, address_line_1: "4097 E 9th Ave", address_line_2: "", city: "Denver", state: "CO", zipcode: "80220")
+      @company = Company.create!(name: "Frank and Roze", federal_ein: 123456789, non_profit: false, address_line_1: "4097 E 9th Ave", address_line_2: "", city: "Denver", state: "CO", zipcode: "80220")
       @company2 = Company.create!(name: "Squeeze", federal_ein: 124365879, non_profit: true, address_line_1: "875 Albioni St", address_line_2: "", city: "Denver", state: "CO", zipcode: "80220")
       @manila = Employee.create!(first_name: "Manila", last_name: "Luzon", i9_eligible: true, benefits_eligible: false, salary: 69000, company_id: @company.id)
       @latrice = Employee.create!(first_name: "Latrice", last_name: "Royale", i9_eligible: true, benefits_eligible: false, salary: 95000, company_id: @company.id)
@@ -40,8 +40,26 @@ RSpec.describe 'Company Show Page', type: :feature do
 
     # When I visit a parent's show page
     # I see a count of the number of children associated with this parent
-      it "I see a count of the number of employees associated with this company" do
-        expect(page).to have_content("Employee Count: #{@company.employee_count}")
+    it "I see a count of the number of employees associated with this company" do
+      expect(page).to have_content("Employee Count: #{@company.employee_count}")
+    end
+
+    # When I visit a parent show page ('/parents/:id')
+    # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
+    it "has a link to take me to that parent's `child_table_name` page ('/companies/:id/employees')" do
+      expect(page).to  have_link("All Employees", href: "/companies/#{@company.id}/employees")
+    end
+
+    # When I visit any page on the site
+    # Then I see a link at the top of the page that takes me to the Child Index
+    describe "When I visit any page on the site" do
+      it "see a link at the top of the page that takes me to the Employees Index" do
+        expect(page).to  have_link('All Employees', href: "/employees")
       end
+
+      it "has a link at the top of the page that takes me to the Parent Index" do
+        expect(page).to  have_link('All Companies', href: "/companies")
+      end
+    end
   end
 end
