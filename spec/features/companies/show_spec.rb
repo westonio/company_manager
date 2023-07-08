@@ -40,8 +40,16 @@ RSpec.describe 'Company Show Page', type: :feature do
 
     # When I visit a parent's show page
     # I see a count of the number of children associated with this parent
-      it "I see a count of the number of employees associated with this company" do
-        expect(page).to have_content("Employee Count: #{@company.employee_count}")
+    it "I see a count of the number of employees associated with this company" do
+      expect(page).to have_content("Employee Count: #{@company.employee_count}")
+    end
+    
+    # When I visit any page on the site
+    # Then I see a link at the top of the page that takes me to the Child Index
+    describe "When I visit any page on the site" do
+      it "see a link at the top of the page that takes me to the Employees Index" do
+        expect(page).to  have_link('All Employees', href: "/employees")
       end
+    end
   end
 end
