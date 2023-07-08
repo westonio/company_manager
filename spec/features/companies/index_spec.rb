@@ -35,7 +35,6 @@ RSpec.describe 'Companies Index', type: :feature do
         expect(page).to have_content(@company1.created_at)
         expect(page).to have_content(@company2.created_at)
         expect(page).to have_content(@company3.created_at)
-        save_and_open_page
       end
   end
 
