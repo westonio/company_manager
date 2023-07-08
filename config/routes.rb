@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/companies/:id/employees", to: "companies#employees_index"
   get "/companies/:id", to: "companies#show"
   get "/companies/:id/edit", to: "companies#edit"
+  patch "/companies/:id", to: "companies#update"
   get "/employees", to: "employees#index"
   get "/employees/:id", to: "employees#show"
 end
