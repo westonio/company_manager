@@ -7,17 +7,17 @@ RSpec.describe "Employees Index Page", type: :feature do
   # Then I see each Child in the system including the Child's attributes
   # (data from each column that is on the child table)
   describe "When I visit '/employees'" do
+    before :each do
+      @company = Company.create!(name: "Frank & Roze", federal_ein: 123456789, non_profit: false, address_line_1: "4097 E 9th Ave", address_line_2: "", city: "Denver", state: "CO", zipcode: "80220")
+      @company2 = Company.create(name: "Squeeze", federal_ein: 124365879, non_profit: true, address_line_1: "875 Albioni St", address_line_2: "apt i", city: "Denver", state: "CO", zipcode: "80220")
+      @manila = Employee.create!(first_name: "Manila", last_name: "Luzon", i9_eligible: true, benefits_eligible: false, salary: 69000, company_id: @company.id)
+      @latrice = Employee.create!(first_name: "Latrice", last_name: "Royale", i9_eligible: true, benefits_eligible: false, salary: 95000, company_id: @company.id)
+      @jimbo = Employee.create!(first_name: "Jimbo", last_name: "Clown", i9_eligible: true, benefits_eligible: false, salary: 87340, company_id: @company2.id)
+
+      visit "/employees"
+    end
+
     describe "I see each Employee in the system including the Employee's attributes" do
-      before :each do
-        @company = Company.create!(name: "Frank & Roze", federal_ein: 123456789, non_profit: false, address_line_1: "4097 E 9th Ave", address_line_2: "", city: "Denver", state: "CO", zipcode: "80220")
-        @company2 = Company.create(name: "Squeeze", federal_ein: 124365879, non_profit: true, address_line_1: "875 Albioni St", address_line_2: "apt i", city: "Denver", state: "CO", zipcode: "80220")
-        @manila = Employee.create!(first_name: "Manila", last_name: "Luzon", i9_eligible: true, benefits_eligible: false, salary: 69000, company_id: @company.id)
-        @latrice = Employee.create!(first_name: "Latrice", last_name: "Royale", i9_eligible: true, benefits_eligible: false, salary: 95000, company_id: @company.id)
-        @jimbo = Employee.create!(first_name: "Jimbo", last_name: "Clown", i9_eligible: true, benefits_eligible: false, salary: 87340, company_id: @company2.id)
-
-        visit "/employees"
-      end
-
       it 'shows employees name' do
         expect(page).to have_content(@manila.name)
         expect(page).to have_content(@latrice.name)
@@ -46,6 +46,14 @@ RSpec.describe "Employees Index Page", type: :feature do
         expect(page).to have_content(@manila.company_id)
         expect(page).to have_content(@latrice.company_id)
         expect(page).to have_content(@jimbo.company_id)
+      end
+    end
+
+    # When I visit any page on the site
+    # Then I see a link at the top of the page that takes me to the Child Index
+    describe "When I visit any page on the site" do
+      it "see a link at the top of the page that takes me to the Employees Index" do
+        expect(page).to  have_link('All Employees', href: "/employees")
       end
     end
   end
