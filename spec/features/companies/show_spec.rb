@@ -56,11 +56,11 @@ RSpec.describe 'Company Show Page', type: :feature do
     end
 
     it "has a link to update the company 'Update Company'" do
-      expect(page).to  have_link('Update Company', href: "/companies/#{@company.id}/edit")
+      expect(page).to  have_link('Edit Company', href: "/companies/#{@company.id}/edit")
     end
 
     it "when clicked, redirects to '/companies/:id/edit'" do
-      click_link("Update Company")
+      click_link("Edit Company")
       expect(page).to have_current_path("/companies/#{@company.id}/edit")
     end
   end
