@@ -4,6 +4,7 @@
 </nav>
 
 <h1><%= @company.name %></h1>
+<h2>Company Info</h2>
 <h3>Federal EIN: <span style="font-weight:normal"><%= @company.federal_ein %></span></h3> 
 <h3>Non-Profit? <span style="font-weight:normal"><%= @company.non_profit %></span></h3> 
 <h3>Address: <span style="font-weight:normal">
@@ -13,4 +14,7 @@
       <%= "#{@company.address_line_1}, #{@company.address_line_2}, #{@company.city}, #{@company.state} #{@company.zipcode}" %>
     <% end %></span>
 </h3>
-  <h3>Employee Count: <span style="font-weight:normal"><%= @company.employee_count %></span></h3>
+<br/>
+
+<h2><a href="/companies/<%= @company.id %>/employees">All Employees</a></h2>
+<h3>Employee Count: <span style="font-weight:normal"><%= @company.employee_count %></span></h3>
