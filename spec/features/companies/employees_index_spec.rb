@@ -49,6 +49,10 @@ RSpec.describe 'Show companys employees index', type: :feature do
       it "see a link at the top of the page that takes me to the Employees Index" do
         expect(page).to  have_link('All Employees', href: "/employees")
       end
+
+      it "has a link at the top of the page that takes me to the Parent Index" do
+        expect(page).to  have_link('All Companies', href: "/companies")
+      end
     end
   end
 end
