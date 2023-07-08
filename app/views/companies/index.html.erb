@@ -3,8 +3,10 @@
   <a href="/employees">All Employees</a> 
 </nav>
 
-<h1>My Companies</h1>
+<h1>Companies</h1>
 
 <% @companies.each do |company| %>
-  <p><b><%= company.name %></b> Created at: <%= company.created_at %></p>
+  <h3><b><a href="/companies/<%= company.id %>"><%= company.name %></a></b> Created at: <%= company.created_at %></h3>
 <% end %>
+
+<a href="/companies/new"><button>Add New Company</button></a>

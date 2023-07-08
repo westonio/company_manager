@@ -1,0 +1,25 @@
+<h1>Add New Company</h1>
+<form id="new_company" action="/companies" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter Company Details</p>
+  <label for="name">Name </label>
+  <input type="text" name="company[name]"><br/>
+  <label for="federal_ein">Federal EIN </label>
+  <input type="text" name="company[federal_ein]"><br/>
+  <label for="non profit">Non Profit? </label>
+  <select name="company[non_profit]">
+    <option value="false">False</option>
+    <option value="true">True</option>
+  </select><br/>
+  <label for="address line 1">Address Line 1 </label>
+  <input type="text" name="company[address_line_1]"><br/>
+  <label for="address line 2">Address Line 2 </label>
+  <input type="text" name="company[address_line_2]"><br/>
+  <label for="city">City </label>
+  <input type="text" name="company[city]"><br/>
+  <label for="state">State </label>
+  <input type="text" name="company[state]"><br/>
+  <label for="zipcode">Zip Code </label>
+  <input type="text" name="company[zipcode]"><br/>
+  <input type="submit" value="Save Company">
+</form>

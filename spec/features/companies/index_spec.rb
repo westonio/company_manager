@@ -4,7 +4,6 @@ RSpec.describe 'Companies Index', type: :feature do
   # For each parent table
   # As a visitor
   # When I visit '/parents'
-  # Then I see the name of each parent record in the system
   describe "When I visit '/companies'" do
     before :each do
       @company1 = Company.create!(name: "Frank and Roze", federal_ein: 123456789, non_profit: false, address_line_1: "4097 E 9th Ave", address_line_2: "", city: "Denver", state: "CO", zipcode: "80220")
@@ -19,35 +18,36 @@ RSpec.describe 'Companies Index', type: :feature do
       expect(page).to have_content(@company3.name)
     end
     
-    # User Story 6, Parent Index sorted by Most Recently Created 
-    # When I visit the parent index,
-    # I see that records are ordered by most recently created first
-    # And next to each of the records I see when it was created
-  
-    describe "I see that records are ordered by most recently created first"
+    describe "I see that records are ordered by most recently created first" do
       it 'orders by most recently created' do
         #using orderly gem
         expect(@company3.name).to appear_before(@company2.name)
         expect(@company2.name).to appear_before(@company1.name)
       end
-
+    
       it 'shows when company was created' do
         expect(page).to have_content(@company1.created_at)
         expect(page).to have_content(@company2.created_at)
         expect(page).to have_content(@company3.created_at)
       end
+    end
 
-      # When I visit any page on the site
-      # Then I see a link at the top of the page that takes me to the Child Index
-      describe "When I visit any page on the site" do
-        it "see a link at the top of the page that takes me to the Employees Index" do
-          expect(page).to  have_link('All Employees', href: "/employees")
-        end
+    describe "When I visit any page on the site" do
+      it "see a link at the top of the page that takes me to the Employees Index" do
+        expect(page).to  have_link('All Employees', href: "/employees")
+      end
 
-        it "has a link at the top of the page that takes me to the Parent Index" do
-          expect(page).to  have_link('All Companies', href: "/companies")
+      it "has a link at the top of the page that takes me to the Parent Index" do
+        expect(page).to  have_link('All Companies', href: "/companies")
+      end
+    end
+
+    describe "I see a link to create a new Company record" do
+      describe "When I click this link Then I am taken to '/parents/new' where I  see a form for a new parent record" do
+        it "has a link to '/companies/new" do
+          expect(page).to  have_link('Add New Company', href: "/companies/new")
         end
       end
+    end
   end
-
 end

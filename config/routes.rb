@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   get "/", to: "welcome#index"
   get "/companies", to: "companies#index"
+  get "/companies/new", to: "companies#new"
+  post "/companies", to: "companies#create"
   get "/companies/:id/employees", to: "companies#employees_index"
   get "/companies/:id", to: "companies#show"
   get "/employees", to: "employees#index"
