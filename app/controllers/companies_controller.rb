@@ -29,4 +29,7 @@ class CompaniesController < ApplicationController
     company.save
     redirect_to "/companies"
   end
+
+  def edit
+  end
 end
