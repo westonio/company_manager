@@ -4,6 +4,7 @@
 </nav>
 
 <h1><%= @employee.name %></h1>
+<a href="/employees/<%= @employee.id %>/edit"><button>Edit Employee</button></a></p>
 <p><b>i-9 Eligible?</b> <%= @employee.i9_eligible %></p>
 <p><b>Benefits Eligible?</b> <%= @employee.benefits_eligible %></p>
 <p><b>Salary:</b> <%= @employee.salary %></p>

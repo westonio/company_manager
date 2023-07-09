@@ -5,14 +5,14 @@
   <label for="name">Name </label>
   <input type="text" name="company[name]" value="<%= @company.name %>"><br/>
   <label for="federal_ein">Federal EIN </label>
-  <input type="text" name="company[federal_ein]" value="<%= @company.federal_ein %>"><br/>
+  <input type="number" name="company[federal_ein]" value="<%= @company.federal_ein %>"><br/>
   <label for="non profit">Non Profit? </label>
   <select name="company[non_profit]" select="<%= @company.non_profit %>">
     <option value="<%= @company.non_profit %>"><%= @company.non_profit.to_s.capitalize %></option>
     <% if @company.non_profit %>
-      <option value="false" <% 'selected' if @company.non_profit = false %>>False</option>
+      <option value="false">False</option>
     <% else %>
-      <option value="true" <% 'selected' if @company.non_profit = true %>>True</option>
+      <option value="true">True</option>
     <% end %>
   </select><br/>
   <label for="address line 1">Address Line 1 </label>
