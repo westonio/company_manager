@@ -5,7 +5,7 @@
   <label for="name">Name </label>
   <input type="text" name="company[name]" value="<%= @company.name %>"><br/>
   <label for="federal_ein">Federal EIN </label>
-  <input type="text" name="company[federal_ein]" value="<%= @company.federal_ein %>"><br/>
+  <input type="number" name="company[federal_ein]" value="<%= @company.federal_ein %>"><br/>
   <label for="non profit">Non Profit? </label>
   <select name="company[non_profit]" select="<%= @company.non_profit %>">
     <option value="<%= @company.non_profit %>"><%= @company.non_profit.to_s.capitalize %></option>

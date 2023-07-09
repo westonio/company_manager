@@ -38,7 +38,7 @@ class CompaniesController < ApplicationController
     company = Company.find(params[:id])
     company.update(
       name: params[:company][:name],
-      federal_ein: params[:company][:federal_ein].to_i,
+      federal_ein: params[:company][:federal_ein],
       non_profit: params[:company][:non_profit],
       address_line_1: params[:company][:address_line_1],
       address_line_2: params[:company][:address_line_2],
