@@ -13,6 +13,7 @@ RSpec.describe "Employees Index Page", type: :feature do
       @manila = Employee.create!(first_name: "Manila", last_name: "Luzon", i9_eligible: true, benefits_eligible: false, salary: 69000, company_id: @company.id)
       @latrice = Employee.create!(first_name: "Latrice", last_name: "Royale", i9_eligible: true, benefits_eligible: false, salary: 95000, company_id: @company.id)
       @jimbo = Employee.create!(first_name: "Jimbo", last_name: "Clown", i9_eligible: true, benefits_eligible: false, salary: 87340, company_id: @company2.id)
+      @monet = Employee.create!(first_name: "Money", last_name: "Exchange", i9_eligible: false, benefits_eligible: false, salary: 123000, company_id: @company2.id)
 
       visit "/employees"
     end
@@ -58,6 +59,15 @@ RSpec.describe "Employees Index Page", type: :feature do
 
       it "has a link at the top of the page that takes me to the Parent Index" do
         expect(page).to  have_link('All Companies', href: "/companies")
+      end
+    end
+
+    describe "only see records where the 'i-9 Eligible?' boolean column is `true`" do
+      it 'only shows i-9 eligible employees' do
+        expect(page).to have_content(@manila.name)
+        expect(page).to have_content(@latrice.name)
+        expect(page).to have_content(@jimbo.name)
+        expect(page).to_not have_content(@monet.name) # Employees not i-9 eligible
       end
     end
   end
