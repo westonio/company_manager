@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = Employee.all
+    @employees = Employee.all.where(i9_eligible: true)
   end
 
   def show
