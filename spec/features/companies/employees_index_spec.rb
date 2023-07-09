@@ -42,9 +42,16 @@ RSpec.describe 'Show companys employees index', type: :feature do
         expect(page).to have_content(@latrice.salary)
         expect(page).to_not have_content(@jimbo)
       end
+      
+      describe "link to create new employees that redirects to employees/new" do
+        it "has a link to add a new employee for that company 'Create Employee'" do
+          expect(page).to  have_link('Add New Employee', href: "/companies/#{@company.id}/employees/new")
+        end
 
-      it "has a link to add a new employee for that company 'Create Employee'" do
-        expect(page).to  have_link('Add New Employee', href: "/employees/new")
+        it "takes me to to '/companies/:id/employees/new' where I see a form to add a new employee" do
+          click_link "Add New Employee"
+          expect(page.current_path).to eq("/companies/#{@company.id}/employees/new")
+        end
       end
     end
     # When I visit any page on the site
