@@ -29,11 +29,11 @@ RSpec.describe "'employee/new' page", type: :feature do
         end
         click_button('Save Employee') # submits the form
 
-        expect(page.current_path).to eq("companies/#{@company.id}/employees")
+        expect(page.current_path).to eq("/companies/#{@company.id}/employees")
         expect(page).to have_content("Trinity The Tuck")
-        expect(page).to have_content("i9 Eligible? True")
-        expect(page).to have_content("Benefits Eligible? False")
-        expect(page).to have_content("Salary 85000")
+        expect(page).to have_content("i-9 Eligible? true")
+        expect(page).to have_content("Benefits Eligible? false")
+        expect(page).to have_content("Salary: 85000")
       end
     end
   end
