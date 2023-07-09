@@ -1,0 +1,22 @@
+<h1>Add New Employee for <%= @company.name %></h1>
+<form id="new_employee" action="/companies/<%= @company.id %>/employees" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter Employee Details</p>
+  <label for="first_name">First Name</label>
+  <input type="text" name="employee[first_name]"><br/>
+  <label for="last_name">Last Name</label>
+  <input type="text" name="employee[last_name]"><br/>
+  <label for="i9_eligible?">i9 Eligible? </label>
+  <select name="employee[i9_eligible]">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select><br/>
+   <label for="benefits_eligible?">Benefits Eligible?</label>
+  <select name="employee[benefits_eligible]">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select><br/>
+  <label for="salary">Salary</label>
+  <input type="text" name="employee[salary]"><br/>
+  <input type="submit" value="Save Employee">
+</form>
