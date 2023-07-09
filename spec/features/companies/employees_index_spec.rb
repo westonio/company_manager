@@ -42,6 +42,10 @@ RSpec.describe 'Show companys employees index', type: :feature do
         expect(page).to have_content(@latrice.salary)
         expect(page).to_not have_content(@jimbo)
       end
+
+      it "has a link to add a new employee for that company 'Create Employee'" do
+        expect(page).to  have_link('Add New Employee', href: "/employees/new")
+      end
     end
     # When I visit any page on the site
     # Then I see a link at the top of the page that takes me to the Child Index
