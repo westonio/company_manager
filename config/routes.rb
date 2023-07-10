@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "/companies/:id", to: "companies#show"
   get "/companies/:id/edit", to: "companies#edit"
   patch "/companies/:id", to: "companies#update"
-  get "/companies/:id/employees", to: "companies#employees_index"
+  get "/companies/:id/employees", to: "company_employees#index"
   get "/companies/:id/employees/new", to: "employees#new"
   post '/companies/:id/employees', to: "employees#create"
   
