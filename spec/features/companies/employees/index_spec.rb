@@ -66,5 +66,19 @@ RSpec.describe 'Show companys employees index', type: :feature do
         expect(page).to  have_link('All Companies', href: "/companies")
       end
     end
+
+    describe "User Story 16 - Alphabetical order" do
+      it "has a link to sort the Company's Employees in alphabetical order" do
+        expect(page).to have_link("Sort Alphabetically", href: "/companies/#{@company.id}/employees?sort=A-Z")
+      end
+
+      it "when clicked, directs back to Employees Index Page with Employees in Alphabetical Order" do
+        expect(@manila.name).to appear_before(@latrice.name)
+        
+        click_link 'Sort Alphabetically'
+      
+        expect(@latrice.name).to appear_before(@manila.name)
+      end
+    end
   end
 end
