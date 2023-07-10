@@ -25,8 +25,8 @@ RSpec.describe "Update Company page '/companies/:id/update'", type: :feature do
   # and I am redirected to the Parent's Show page where I see the parent's updated info
     it "should update and redirect" do
       within("#edit_company") do
-        fill_in 'company[name]', with: 'Roze and Frank'
-        select 'True', from: 'company[non_profit]'
+        fill_in :name, with: 'Roze and Frank'
+        select 'True', from: :non_profit
       end
       click_button('Save Company') # submits the form
 
