@@ -26,14 +26,14 @@ RSpec.describe 'Show companys employees index', type: :feature do
       end
 
       it 'shows employees i9_eligibility (boolean)' do
-        expect(page).to have_content(@manila.i9_eligible)
-        expect(page).to have_content(@latrice.i9_eligible)
+        expect(page).to have_content(@manila.i9_eligible.to_s.capitalize)
+        expect(page).to have_content(@latrice.i9_eligible.to_s.capitalize)
         expect(page).to_not have_content(@jimbo)
       end
 
       it 'shows employees benefits eligibility (boolean)' do
-        expect(page).to have_content(@manila.benefits_eligible)
-        expect(page).to have_content(@latrice.benefits_eligible)
+        expect(page).to have_content(@manila.benefits_eligible.to_s.capitalize)
+        expect(page).to have_content(@latrice.benefits_eligible.to_s.capitalize)
         expect(page).to_not have_content(@jimbo)
       end
 

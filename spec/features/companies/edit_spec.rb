@@ -32,7 +32,7 @@ RSpec.describe "Update Company page '/companies/:id/update'", type: :feature do
 
       expect(page.current_path).to eq("/companies/#{@company.id}")
       expect(page).to have_content("Roze and Frank")
-      expect(page).to have_content("Non-Profit? true")
+      expect(page).to have_content("Non-Profit? True")
     end
   end
 end

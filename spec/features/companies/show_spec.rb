@@ -25,8 +25,8 @@ RSpec.describe 'Company Show Page', type: :feature do
     end
 
     it 'displays if company is non profit (boolean)' do
-      expect(page).to have_content(@company.non_profit)
-      expect(page).to_not have_content(@company2.non_profit)
+      expect(page).to have_content(@company.non_profit.to_s.capitalize)
+      expect(page).to_not have_content(@company2.non_profit.to_s.capitalize)
     end
 
     it 'displays the company address' do
