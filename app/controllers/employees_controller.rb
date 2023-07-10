@@ -14,11 +14,11 @@ class EmployeesController < ApplicationController
   def create
     company = Company.find(params[:id])
     company.employees.create(
-      first_name: params[:employee][:first_name],
-      last_name: params[:employee][:last_name],
-      i9_eligible: params[:employee][:i9_eligible],
-      benefits_eligible: params[:employee][:benefits_eligible],
-      salary: params[:employee][:salary]
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      i9_eligible: params[:i9_eligible],
+      benefits_eligible: params[:benefits_eligible],
+      salary: params[:salary]
     )
 
     redirect_to "/companies/#{company.id}/employees"
@@ -31,11 +31,11 @@ class EmployeesController < ApplicationController
   def update
     employee = Employee.find(params[:id])
     employee.update(
-      first_name: params[:employee][:first_name],
-      last_name: params[:employee][:last_name],
-      i9_eligible: params[:employee][:i9_eligible],
-      benefits_eligible: params[:employee][:benefits_eligible],
-      salary: params[:employee][:salary]
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      i9_eligible: params[:i9_eligible],
+      benefits_eligible: params[:benefits_eligible],
+      salary: params[:salary]
     )
     employee.save
     redirect_to "/employees/#{employee.id}"
