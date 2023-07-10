@@ -25,15 +25,15 @@ RSpec.describe "'/employees/:id/edit' page", type: :feature do
       # and I am redirected to the Child Show page where I see the Child's updated information'
       it "saves the edited employee info and redirects to the employeees/:id page" do
         within("#edit_employee") do
-          fill_in 'employee[first_name]', with: 'Monet'
-          fill_in 'employee[last_name]', with: 'Exchange'
-          select 'True', from: 'employee[benefits_eligible]'
+          fill_in :first_name, with: 'Monet'
+          fill_in :last_name, with: 'Exchange'
+          select 'True', from: :benefits_eligible
         end
         click_button('Save Employee') # submits the form
   
         expect(page.current_path).to eq("/employees/#{@manila.id}")
         expect(page).to have_content("Monet Exchange")
-        expect(page).to have_content("Benefits Eligible? true")
+        expect(page).to have_content("Benefits Eligible? True")
       end
     end
   end
