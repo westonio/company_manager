@@ -3,7 +3,10 @@
   <a href="/employees">All Employees</a> 
 </nav>
 
+
 <h1><%= @company.name %> Employees</h1>
+<a href="/companies/<%= @company.id %>/employees?sort=A-Z">Sort Alphabetically</a>
+
 <% @employees.each do |employee| %>
   <h3><%= employee.name %></h3>
   <p>i-9 Eligible? <%= employee.i9_eligible.to_s.capitalize %></p>
