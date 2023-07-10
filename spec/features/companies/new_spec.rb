@@ -19,14 +19,14 @@ RSpec.describe "New Company Page '/companies/new'", type: :feature do
       it "redirects to the Company Index page where I see the new Company displayed" do
         visit '/companies/new'
         within("#new_company") do
-          fill_in 'company[name]', with: 'Trader Joes'
-          fill_in 'company[federal_ein]', with: 126983749
-          select 'False', from: 'company[non_profit]'
-          fill_in 'company[address_line_1]', with: "800 8th Street"
-          fill_in 'company[address_line_2]', with: ""
-          fill_in 'company[city]', with: "Denver"
-          fill_in 'company[state]', with: "CO"
-          fill_in 'company[zipcode]', with: "80220"
+          fill_in :name, with: 'Trader Joes'
+          fill_in :federal_ein, with: 126983749
+          select 'False', from: :non_profit
+          fill_in :address_line_1, with: "800 8th Street"
+          fill_in :address_line_2, with: ""
+          fill_in :city, with: "Denver"
+          fill_in :state, with: "CO"
+          fill_in :zipcode, with: "80220"
         end
         click_button('Save Company') # submits the form
 
