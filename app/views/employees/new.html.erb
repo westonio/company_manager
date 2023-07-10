@@ -1,22 +1,16 @@
 <h1>Add New Employee for <%= @company.name %></h1>
-<form id="new_employee" action="/companies/<%= @company.id %>/employees" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Enter Employee Details</p>
-  <label for="first_name">First Name</label>
-  <input type="text" name="employee[first_name]"><br/>
-  <label for="last_name">Last Name</label>
-  <input type="text" name="employee[last_name]"><br/>
-  <label for="i9_eligible?">i9 Eligible? </label>
-  <select name="employee[i9_eligible]">
-    <option value="true">True</option>
-    <option value="false">False</option>
-  </select><br/>
-   <label for="benefits_eligible?">Benefits Eligible?</label>
-  <select name="employee[benefits_eligible]">
-    <option value="true">True</option>
-    <option value="false">False</option>
-  </select><br/>
-  <label for="salary">Salary</label>
-  <input type="number" name="employee[salary]"><br/>
-  <input type="submit" value="Save Employee">
-</form>
+
+<%= form_with id: "new_employee", url: "/companies/#{@company.id}/employees", method: :post, local: true do |form| %>
+  <%= form.label :first_name, "First Name" %>
+  <%= form.text_field :first_name %>
+  <%= form.label :last_name, "Last Name" %>
+  <%= form.text_field :last_name %>
+  <%= form.label :i9_eligible, "i9 Eligible?" %>
+  <%= form.select :i9_eligible, [["True", "true"],["False", "false"]], selected: "true" %>
+  <%= form.label :benefits_eligible, "Benefits Eligible?" %>
+  <%= form.select :benefits_eligible, [["True", "true"],["False", "false"]], selected: "false" %>
+  <%= form.label :salary, "Salary" %>
+  <%= form.number_field :salary %>
+
+  <%= form.submit "Save Employee" %>
+<% end %>

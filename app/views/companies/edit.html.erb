@@ -1,29 +1,22 @@
 <h1>Edit Company Info</h1>
-<form id="edit_company" action="/companies/<%= @company.id %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH">
-  <label for="name">Name </label>
-  <input type="text" name="company[name]" value="<%= @company.name %>"><br/>
-  <label for="federal_ein">Federal EIN </label>
-  <input type="number" name="company[federal_ein]" value="<%= @company.federal_ein %>"><br/>
-  <label for="non profit">Non Profit? </label>
-  <select name="company[non_profit]" select="<%= @company.non_profit %>">
-    <option value="<%= @company.non_profit %>"><%= @company.non_profit.to_s.capitalize %></option>
-    <% if @company.non_profit %>
-      <option value="false">False</option>
-    <% else %>
-      <option value="true">True</option>
-    <% end %>
-  </select><br/>
-  <label for="address line 1">Address Line 1 </label>
-  <input type="text" name="company[address_line_1]" value="<%= @company.address_line_1 %>"><br/>
-  <label for="address line 2">Address Line 2 </label>
-  <input type="text" name="company[address_line_2]" value="<%= @company.address_line_2 %>"><br/>
-  <label for="city">City </label>
-  <input type="text" name="company[city]" value="<%= @company.city %>"><br/>
-  <label for="state">State </label>
-  <input type="text" name="company[state]" value="<%= @company.state %>"><br/>
-  <label for="zipcode">Zip Code </label>
-  <input type="text" name="company[zipcode]" value="<%= @company.zipcode %>"><br/>
-  <input type="submit" value="Save Company">
-</form>
+
+<%= form_with id: "edit_company", url: "/companies/#{@company.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name, "Name" %>
+  <%= form.text_field :name, value: @company.name %><br/>
+  <%= form.label :federal_ein, "Federal EIN" %>
+  <%= form.number_field :federal_ein, value: @company.federal_ein%><br/>
+  <%= form.label :non_profit, "Non Profit?" %>
+  <%= form.select :non_profit, [["True", "true"],["False", "false"]], selected: @company.non_profit %><br/>
+  <%= form.label :address_line_1, "Address Line 1" %>
+  <%= form.text_field :address_line_1, value: @company.address_line_1 %><br/>
+  <%= form.label :address_line_2, "Address Line 2" %>
+  <%= form.text_field :address_line_2, value: @company.address_line_2 %><br/>
+  <%= form.label :city, "City" %>
+  <%= form.text_field :city, value: @company.city %><br/>
+  <%= form.label :state, "State" %>
+  <%= form.text_field :state, value: @company.state %><br/>
+  <%= form.label :zipcode, "Zip Code" %>
+  <%= form.text_field :zipcode, value: @company.zipcode %><br/>
+
+  <%= form.submit "Save Company" %>
+<% end %>

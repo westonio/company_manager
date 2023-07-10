@@ -17,14 +17,14 @@ class CompaniesController < ApplicationController
 
   def create
     company = Company.new(
-      name: params[:company][:name],
-      federal_ein: params[:company][:federal_ein].to_i,
-      non_profit: params[:company][:non_profit],
-      address_line_1: params[:company][:address_line_1],
-      address_line_2: params[:company][:address_line_2],
-      city: params[:company][:city],
-      state: params[:company][:state],
-      zipcode: params[:company][:zipcode]
+      name: params[:name],
+      federal_ein: params[:federal_ein].to_i,
+      non_profit: params[:non_profit],
+      address_line_1: params[:address_line_1],
+      address_line_2: params[:address_line_2],
+      city: params[:city],
+      state: params[:state],
+      zipcode: params[:zipcode]
     )
     company.save
     redirect_to "/companies"
@@ -37,14 +37,14 @@ class CompaniesController < ApplicationController
   def update
     company = Company.find(params[:id])
     company.update(
-      name: params[:company][:name],
-      federal_ein: params[:company][:federal_ein],
-      non_profit: params[:company][:non_profit],
-      address_line_1: params[:company][:address_line_1],
-      address_line_2: params[:company][:address_line_2],
-      city: params[:company][:city],
-      state: params[:company][:state],
-      zipcode: params[:company][:zipcode]
+      name: params[:name],
+      federal_ein: params[:federal_ein],
+      non_profit: params[:non_profit],
+      address_line_1: params[:address_line_1],
+      address_line_2: params[:address_line_2],
+      city: params[:city],
+      state: params[:state],
+      zipcode: params[:zipcode]
     )
     company.save
     redirect_to "/companies/#{company.id}"

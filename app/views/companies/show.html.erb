@@ -6,7 +6,7 @@
 <h1><%= @company.name %></h1>
 <a href="/companies/<%= @company.id %>/edit"><button>Edit Company</button></a></p>
 <h3>Federal EIN: <span style="font-weight:normal"><%= @company.federal_ein %></span></h3> 
-<h3>Non-Profit? <span style="font-weight:normal"><%= @company.non_profit %></span></h3> 
+<h3>Non-Profit? <span style="font-weight:normal"><%= @company.non_profit.to_s.capitalize %></span></h3> 
 <h3>Address: <span style="font-weight:normal">
     <% if @company.address_line_2.empty? %>
       <%= "#{@company.address_line_1}, #{@company.city}, #{@company.state} #{@company.zipcode}" %>
