@@ -6,10 +6,11 @@
 <h1>Companies</h1>
 
 <% @companies.each do |company| %>
-  <p><b><a href="/companies/<%= company.id %>"><%= company.name %></a></b> 
-  <a id="edit_button" href="/companies/<%= company.id %>/edit"><button>Edit</button></a>
-  Created at: <%= company.created_at %>
-  </p>
+  <h3>
+    <b><a href="/companies/<%= company.id %>"><%= company.name %></a></b> 
+    <a id="edit_button" href="/companies/<%= company.id %>/edit"><button>Edit</button></a>
+    Created at: <%= company.created_at %>
+  </h3>
 <% end %>
 
 <a href="/companies/new"><button>Add New Company</button></a>
