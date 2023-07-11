@@ -40,4 +40,11 @@ class EmployeesController < ApplicationController
     employee.save
     redirect_to "/employees/#{employee.id}"
   end
+
+  def destroy
+    employee = Employee.find(params[:id])
+    employee.delete
+
+    redirect_to "/employees"
+  end
 end
