@@ -4,7 +4,9 @@
 </nav>
 
 <h1><%= @employee.name %></h1>
-<a href="/employees/<%= @employee.id %>/edit"><button>Edit Employee</button></a></p>
+<%= button_to "Edit Employee", "/employees/#{@employee.id}/edit", method: :get %>
+<%= button_to "Delete Employee", "/employees/#{@employee.id}", method: :delete %>
+
 <p><b>i-9 Eligible?</b> <%= @employee.i9_eligible.to_s.capitalize %></p>
 <p><b>Benefits Eligible?</b> <%= @employee.benefits_eligible.to_s.capitalize %></p>
 <p><b>Salary:</b> <%= @employee.salary %></p>
