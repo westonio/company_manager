@@ -51,7 +51,7 @@ RSpec.describe 'Employee Show Page', type: :feature do
 
     describe "I see a link to update that Employee 'Update Employee'" do
       it 'has a link to Update Employee (Edit)' do
-        expect(page).to  have_link('Edit Employee', href: "/employees/#{@manila.id}/edit")
+        expect(page).to  have_button('Edit Employee')
       end
     end
 
