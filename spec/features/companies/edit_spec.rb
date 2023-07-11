@@ -5,6 +5,18 @@ RSpec.describe "Update Company page '/companies/:id/update'", type: :feature do
     @company = Company.create!(name: "Frank and Roze", federal_ein: 123456789, non_profit: false, address_line_1: "4097 E 9th Ave", address_line_2: "", city: "Denver", state: "CO", zipcode: "80220")
     visit "/companies/#{@company.id}/edit"
   end
+
+  describe "Link to update the Company" do
+    it "has a button to edit the company information" do
+      visit "/companies/#{@company.id}"
+      expect(page).to have_button("Edit Company")
+
+      click_button "Edit Company"
+
+      expect(current_path).to eq("/companies/#{@company.id}/edit")
+    end
+  end
+
   describe "I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attribute" do
     it 'has Company attributes' do
     expect(page).to have_content('Name')
