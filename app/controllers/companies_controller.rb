@@ -44,4 +44,12 @@ class CompaniesController < ApplicationController
     company.save
     redirect_to "/companies/#{company.id}"
   end
+
+  def destroy
+    company = Company.find(params[:id])
+    employees = company.employees
+    employees.destroy_all
+    company.destroy
+    redirect_to "/companies"
+  end
 end
