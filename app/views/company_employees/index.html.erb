@@ -8,7 +8,10 @@
 <a href="/companies/<%= @company.id %>/employees?sort=A-Z">Sort Alphabetically</a>
 
 <% @employees.each do |employee| %>
-  <h3><%= employee.name %></h3>
+  <h3>
+    <%= employee.name %>
+    <a id="edit_button" href="/employees/<%= employee.id %>/edit"><button>Edit</button></a>
+  </h3>
   <p>i-9 Eligible? <%= employee.i9_eligible.to_s.capitalize %></p>
   <p>Benefits Eligible? <%= employee.benefits_eligible.to_s.capitalize %></p>
   <p>Salary: <%= employee.salary %></p>

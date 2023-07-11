@@ -49,5 +49,19 @@ RSpec.describe 'Companies Index', type: :feature do
         end
       end
     end
+
+    describe "User story 17 company edit link for all companies" do
+      it "has an edit link next to each company's name" do
+        expect(page).to have_link("Edit", href: "/companies/#{@company1.id}/edit")
+        expect(page).to have_link("Edit", href: "/companies/#{@company2.id}/edit")
+        expect(page).to have_link("Edit", href: "/companies/#{@company3.id}/edit")
+      end
+    
+      it "When clicked, I can edit the company's information" do
+        first('#edit_button').click
+
+        expect(current_path). to eq("/companies/#{@company3.id}/edit")
+      end
+    end
   end
 end

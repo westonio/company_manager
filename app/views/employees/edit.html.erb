@@ -2,15 +2,15 @@
 
 <%= form_with id: "edit_employee", url: "/employees/#{@employee.id}", method: :patch, local: true do |form| %>
   <%= form.label :first_name, "First Name" %>
-  <%= form.text_field :first_name %>
+  <%= form.text_field :first_name, value: @employee.first_name %><br/>
   <%= form.label :last_name, "Last Name" %>
-  <%= form.text_field :last_name %>
+  <%= form.text_field :last_name, value: @employee.last_name %><br/>
   <%= form.label :i9_eligible, "i9 Eligible?" %>
-  <%= form.select :i9_eligible, [["True", "true"],["False", "false"]], selected: @employee.i9_eligible %>
+  <%= form.select :i9_eligible, [["True", "true"],["False", "false"]], selected: @employee.i9_eligible %><br/>
   <%= form.label :benefits_eligible, "Benefits Eligible?" %>
-  <%= form.select :benefits_eligible, [["True", "true"],["False", "false"]], selected: @employee.benefits_eligible %>
+  <%= form.select :benefits_eligible, [["True", "true"],["False", "false"]], selected: @employee.benefits_eligible %><br/>
   <%= form.label :salary, "Salary" %>
-  <%= form.number_field :salary %>
+  <%= form.number_field :salary, value: @employee.salary %><br/>
 
   <%= form.submit "Save Employee" %>
 <% end %>
