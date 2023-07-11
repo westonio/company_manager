@@ -78,7 +78,7 @@ RSpec.describe "Employees Index Page", type: :feature do
         expect(page).to have_link("Edit", href: "/employees/#{@jimbo.id}/edit")
       end
     
-      it "When clicked, I can edit the company's information" do
+      it "When clicked, I can edit the employee's information" do
         first('#edit_button').click
 
         expect(current_path).to eq("/employees/#{@manila.id}/edit")
