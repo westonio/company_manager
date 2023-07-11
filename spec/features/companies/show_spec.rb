@@ -54,5 +54,22 @@ RSpec.describe 'Company Show Page', type: :feature do
         expect(page).to  have_link('All Companies', href: "/companies")
       end
     end
+
+    describe "Link to update the Company" do
+      it "has a button to edit the company information" do
+        expect(page).to have_button("Edit Company")
+
+        click_button "Edit Company"
+
+        expect(current_path).to eq("/companies/#{@company.id}/edit")
+      end
+    end
+
+    describe "has delete button" do
+      it "has a button to delete the company" do
+        expect(page).to have_button("Delete Company")
+      end
+    end
+
   end
 end
