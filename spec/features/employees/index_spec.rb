@@ -70,5 +70,21 @@ RSpec.describe "Employees Index Page", type: :feature do
         expect(page).to_not have_content(@monet.name) # Employees not i-9 eligible
       end
     end
+
+    describe "User story 18 Employee edit link for all Employees" do
+      it "has an edit link next to each employee's name" do
+        expect(page).to have_link("Edit", href: "/employees/#{@manila.id}/edit")
+        expect(page).to have_link("Edit", href: "/employees/#{@latrice.id}/edit")
+        expect(page).to have_link("Edit", href: "/employees/#{@jimbo.id}/edit")
+      end
+    
+      it "When clicked, I can edit the company's information" do
+        first('#edit_button').click
+
+        expect(current_path).to eq("/employees/#{@manila.id}/edit")
+        expect(current_path).to_not eq("/employees/#{@latrice.id}/edit")
+        expect(current_path).to_not eq("/employees/#{@jimbo.id}/edit")
+      end
+    end
   end
 end
