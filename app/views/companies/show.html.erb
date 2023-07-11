@@ -4,7 +4,10 @@
 </nav>
 
 <h1><%= @company.name %></h1>
-<a href="/companies/<%= @company.id %>/edit"><button>Edit Company</button></a></p>
+<%= button_to "Edit Company", "/companies/#{@company.id}/edit", method: :get %>
+<%= button_to "Delete Company", "/companies/#{@company.id}", method: :delete %>
+
+
 <h3>Federal EIN: <span style="font-weight:normal"><%= @company.federal_ein %></span></h3> 
 <h3>Non-Profit? <span style="font-weight:normal"><%= @company.non_profit.to_s.capitalize %></span></h3> 
 <h3>Address: <span style="font-weight:normal">
