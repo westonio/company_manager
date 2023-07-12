@@ -96,5 +96,26 @@ RSpec.describe 'Show companys employees index', type: :feature do
         expect(current_path).to_not eq("/employees/#{@jimbo.id}/edit")
       end
     end
+
+    describe "User Story 21, Display Records Over a Given Threshold" do
+      it 'has a form that allows input of number value' do
+        expect(page).to have_css("#filter_salary")
+      end
+
+      it 'has a submit button for the form' do
+        expect(page).to have_button("Filter Employees")
+      end
+
+      it 'redirects to same page with filtered records after being filled out' do
+        within("#filter_salary") do
+          fill_in :number, with: 70000
+        end
+        click_button('Filter Employees') # submits the form
+  
+        expect(page.current_path).to eq("/companies/#{@company.id}/employees")
+        expect(page).to_not have_content(@manila.name) #salary below the threshold
+        expect(page).to have_content(@latrice.name)
+      end
+    end
   end
 end
