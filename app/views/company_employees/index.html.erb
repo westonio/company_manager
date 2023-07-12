@@ -5,7 +5,13 @@
 
 
 <h1><%= @company.name %> Employees</h1>
-<a href="/companies/<%= @company.id %>/employees?sort=A-Z">Sort Alphabetically</a>
+<%= link_to "Sort Alphabetically", "/companies/#{@company.id}/employees?sort=A-Z" %>
+
+<%= form_with id: "filter_salary", url: "/companies/#{@company.id}/employees?number", method: :get, local: true do |form| %>
+  <%= form.label :number, "Show employees with salaries higher than:" %>
+  <%= form.number_field :number %>
+  <%= form.submit "Filter Employees" %>
+<% end %>
 
 <% @employees.each do |employee| %>
   <h3>
