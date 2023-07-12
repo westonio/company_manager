@@ -73,9 +73,7 @@ RSpec.describe "Employees Index Page", type: :feature do
 
     describe "User story 18 Employee edit link for all Employees" do
       it "has an edit link next to each employee's name" do
-        expect(page).to have_link("Edit", href: "/employees/#{@manila.id}/edit")
-        expect(page).to have_link("Edit", href: "/employees/#{@latrice.id}/edit")
-        expect(page).to have_link("Edit", href: "/employees/#{@jimbo.id}/edit")
+        expect(page).to have_button("Edit")
       end
     
       it "When clicked, I can edit the employee's information" do
@@ -84,6 +82,24 @@ RSpec.describe "Employees Index Page", type: :feature do
         expect(current_path).to eq("/employees/#{@manila.id}/edit")
         expect(current_path).to_not eq("/employees/#{@latrice.id}/edit")
         expect(current_path).to_not eq("/employees/#{@jimbo.id}/edit")
+      end
+    end
+
+    describe "Delete button for all employees" do
+      it "has a Delete button next to every employee name" do
+        expect(page).to have_button("Delete")
+      end
+
+      it "when clicked, will remove the employee from the page" do
+        expect(page).to have_content(@manila.name)
+        expect(page).to have_content(@latrice.name)
+        expect(page).to have_content(@jimbo.name)
+
+        first('#delete_button').click
+
+        expect(page).to_not have_content(@manila.name)
+        expect(page).to have_content(@latrice.name)
+        expect(page).to have_content(@jimbo.name)
       end
     end
   end

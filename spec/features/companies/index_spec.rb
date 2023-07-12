@@ -73,6 +73,7 @@ RSpec.describe 'Companies Index', type: :feature do
       expect(page).to have_content(@company3.name)
 
       first('#delete_button').click
+      
       expect(page).to have_content(@company1.name)
       expect(page).to have_content(@company2.name)
       expect(page).to_not have_content(@company3.name)
