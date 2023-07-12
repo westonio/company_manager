@@ -1,10 +1,13 @@
 class CompanyEmployeesController < ApplicationController
   def index
     @company = Company.find(params[:id])
+    # require 'pry'; binding.pry
     if params[:sort] == "A-Z"
-      @employees = Employee.where(company_id: @company.id).order(first_name: :asc)
+      @employees = @company.alphabetical_employees
+    elsif !params[:number].nil?
+      @employees = @company.salary_more_than(params[:number])
     else
-      @employees = Employee.where(company_id: @company.id)
+      @employees = @company.employees
     end
   end
 end
