@@ -7,7 +7,8 @@
 <% @employees.each do |employee| %>
   <h3>
     <%= employee.name %>
-    <a id="edit_button" href="/employees/<%= employee.id %>/edit"><button>Edit</button></a>
+    <%= button_to "Edit", "/employees/#{employee.id}/edit", method: :get, id: "edit_button" %> 
+    <%= button_to "Delete", "/employees/#{employee.id}", method: :delete, id: "delete_button" %> 
   </h3>
   <p>i-9 Eligible? <%= employee.i9_eligible %></p>
   <p>Benefits Eligible? <%= employee.benefits_eligible %></p>
