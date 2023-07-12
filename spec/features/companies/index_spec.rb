@@ -52,15 +52,31 @@ RSpec.describe 'Companies Index', type: :feature do
 
     describe "User story 17 company edit link for all companies" do
       it "has an edit link next to each company's name" do
-        expect(page).to have_link("Edit", href: "/companies/#{@company1.id}/edit")
-        expect(page).to have_link("Edit", href: "/companies/#{@company2.id}/edit")
-        expect(page).to have_link("Edit", href: "/companies/#{@company3.id}/edit")
+        expect(page).to have_button("Edit")
       end
     
       it "When clicked, I can edit the company's information" do
         first('#edit_button').click
 
         expect(current_path). to eq("/companies/#{@company3.id}/edit")
+      end
+    end
+
+    describe "Delete button for all companies" do
+      it "has a Delete button next to every company name" do
+        expect(page).to have_button("Delete")
+      end
+
+      it "when clicked, will remove the company from the page" do
+      expect(page).to have_content(@company1.name)
+      expect(page).to have_content(@company2.name)
+      expect(page).to have_content(@company3.name)
+
+      first('#delete_button').click
+      
+      expect(page).to have_content(@company1.name)
+      expect(page).to have_content(@company2.name)
+      expect(page).to_not have_content(@company3.name)
       end
     end
   end
